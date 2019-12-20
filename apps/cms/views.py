@@ -27,7 +27,7 @@ class LoginView(views.MethodView):
             remember = form.remember.data
             user = CMSUser.query.filter_by(email = email).first()
             if user and user.check_password(password):
-                session['config.CMS_USER_ID']=user.id
+                session[config.CMS_USER_ID]=user.id
                 """
             #session是存储了user_id,同时这个session又保存在cookies当中,当用户再次请求的时候会把cookies提交给服务器
                 这时候falsk就会把cookies中的session拿到,而后把相应的数据解码出来
